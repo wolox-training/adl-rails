@@ -81,5 +81,6 @@ test:
 production:
   <<: *default
   database: WBooks_production
-  username: WBooks
-  password: <%= ENV['WBOOKS_DATABASE_PASSWORD'] %>
+  username: wbooks-api
+  password: wbooks-api
+  #password: <%= ENV['WBOOKS_DATABASE_PASSWORD'] %>
