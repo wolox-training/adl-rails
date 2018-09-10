@@ -1,4 +1,5 @@
 Documentation:
   Enabled: false
-  LineLength:
+
+LineLength:
   Max: 99
