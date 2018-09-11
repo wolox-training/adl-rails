@@ -23,7 +23,6 @@ default: &default
 
 development:
   <<: *default
-  #database: kick_development
   database: wbooks
   username: wbooks-api
   password: wbooks-api
