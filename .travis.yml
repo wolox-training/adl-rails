@@ -31,8 +31,7 @@ before_script:
 
 script:
   - bundle exec rspec spec -fd
-  - bundle exec rubocop app spec -R --format simple
-  #- bundle exec scss-lint app/assets/stylesheets/
+  - bundle exec rubocop app spec -R --format simple -a
 
 #notifications:
 #  email:
