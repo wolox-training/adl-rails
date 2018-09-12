@@ -25,8 +25,8 @@ before_install:
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c "CREATE USER \"user-wbooks-test\" WITH PASSWORD 'user-wbooks-test';" -U postgres
-  - psql -c "DROP DATABASE IF EXISTS \"wbooks_test\";" -U postgres
-  - psql -c "CREATE DATABASE \"wbooks_test\" ENCODING 'utf8';" -U postgres
+  - psql -c "DROP DATABASE IF EXISTS \"wbooks_api_test\";" -U postgres
+  - psql -c "CREATE DATABASE \"wbooks_api_test\" ENCODING 'utf8';" -U postgres
   - bundle exec rake db:migrate
 
 script:
