@@ -23,9 +23,10 @@ default: &default
 
 development:
   <<: *default
-  database: kick_development
+  database: wbooks
   username: wbooks-api
   password: wbooks-api
+  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
