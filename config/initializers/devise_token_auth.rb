@@ -10,7 +10,6 @@ DeviseTokenAuth.setup do |config|
   # By default, users will need to re-authenticate after 2 weeks. This setting
   # determines how long tokens will remain valid after they are issued.
   # config.token_lifespan = 2.weeks
-
   # Sets the max number of concurrent devices per user, which is 10 by default.
   # After this limit is reached, the oldest tokens will be removed.
   # config.max_number_of_devices = 10
@@ -35,6 +34,7 @@ DeviseTokenAuth.setup do |config|
   # By default we will use callbacks for single omniauth.
   # It depends on fields like email, provider and uid.
   # config.default_callbacks = true
+  config.default_confirm_success_url = true
 
   # Makes it possible to change the headers names
   # config.headers_names = {:'access-token' => 'access-token',
