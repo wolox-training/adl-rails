@@ -42,6 +42,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rubocop'
   gem 'factory_bot', '~> 4.11.1'
+  gem 'rspec-rails', '~> 3.8.0'
 end
 
 group :development do
