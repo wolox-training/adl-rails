@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 describe Book, type: :model do
-  subject(:book) { described_class.new(gender: gender, author: author, image: image, title: title, editor: editor, year: year) }
+  subject(:book) { described_class.new(genre: genre, author: author, image: image, title: title, publisher: publisher, year: year) }
 
-  let(:gender) { Faker::Book.genre }
+  let(:genre) { Faker::Book.genre }
   let(:author) { Faker::Book.author }
   let(:image) { 'ImagenFalsa123.gif' }
   let(:title) { Faker::Book.title }
-  let(:editor) { Faker::Book.publisher }
+  let(:publisher) { Faker::Book.publisher }
   let(:year) { '2006' }
 
   it do
@@ -16,8 +16,8 @@ describe Book, type: :model do
 
   describe '#Create' do
     context 'when the user is created' do
-      it 'also creates its random gender' do
-        expect(book.gender).to be_present
+      it 'also creates its random genre' do
+        expect(book.genre).to be_present
       end
 
       it 'also creates its random author' do
@@ -32,8 +32,8 @@ describe Book, type: :model do
         expect(book.title).to be_present
       end
 
-      it 'also creates its random editor' do
-        expect(book.editor).to be_present
+      it 'also creates its random publisher' do
+        expect(book.publisher).to be_present
       end
 
       it 'also creates its year, 2006' do
@@ -44,15 +44,15 @@ describe Book, type: :model do
     context 'When author is nil' do
       let(:author) { nil }
 
-      it "The user isn't created" do
+      it "The book isn't created" do
         expect(book).to be_invalid
       end
     end
 
-    context 'When gender is nil' do
-      let(:gender) { nil }
+    context 'When genre is nil' do
+      let(:genre) { nil }
 
-      it "The user isn't created" do
+      it "The book isn't created" do
         expect(book).to be_invalid
       end
     end
@@ -60,15 +60,7 @@ describe Book, type: :model do
     context 'When image is nil' do
       let(:image) { nil }
 
-      it "The user isn't created" do
-        expect(book).to be_invalid
-      end
-    end
-
-    context 'When gender is nil' do
-      let(:gender) { nil }
-
-      it "The user isn't created" do
+      it "The book isn't created" do
         expect(book).to be_invalid
       end
     end
@@ -76,15 +68,23 @@ describe Book, type: :model do
     context 'When year is nil' do
       let(:year) { nil }
 
-      it "The user isn't created" do
+      it "The book isn't created" do
         expect(book).to be_invalid
       end
     end
 
-    context 'When editor is nil' do
-      let(:editor) { nil }
+    context 'When publisher is nil' do
+      let(:publisher) { nil }
 
-      it "The user isn't created" do
+      it "The book isn't created" do
+        expect(book).to be_invalid
+      end
+    end
+
+    context 'When title is nil' do
+      let(:title) { nil }
+
+      it "The book isn't created" do
         expect(book).to be_invalid
       end
     end
