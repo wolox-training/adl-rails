@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe User, type: :model do
-
   subject(:user) do
     User.new(first_name: first_name, last_name: last_name, email: email, password: password, password_confirmation: password_confirmation)
   end

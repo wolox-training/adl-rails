@@ -2,4 +2,7 @@ Documentation:
   Enabled: false
 
 LineLength:
-  Max: 99
+  Max: 150
+
+BlockLength:
+  Max: 100
