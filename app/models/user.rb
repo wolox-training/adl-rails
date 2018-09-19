@@ -10,4 +10,5 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   before_save :skip_confirmation!
+  has_one :rent, dependent: :destroy
 end
