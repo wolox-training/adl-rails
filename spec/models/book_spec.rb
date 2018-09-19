@@ -12,10 +12,4 @@ describe Book, type: :model do
     it { is_expected.to validate_presence_of(:image) }
     it { is_expected.to validate_presence_of(:publisher) }
   end
-
-  context 'when the title is mising' do
-    let(:book) { build(:book, title: nil) }
-
-    it { expect(book).to be_invalid }
-  end
 end
