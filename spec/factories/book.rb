@@ -2,9 +2,9 @@ FactoryBot.define do
   factory :book do
     author    { Faker::Book.author }
     genre     { Faker::Book.genre }
-    image     { 'ImagenFalsa123.gif' }
+    image     { Faker::Avatar.image }
     title     { Faker::Book.title }
     publisher { Faker::Book.publisher }
-    year      { '2006' }
+    year      { Faker::Number.between(1500, 2018) }
   end
 end
