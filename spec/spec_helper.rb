@@ -95,6 +95,6 @@ RSpec.configure do |config|
 
   #  #Include the Syntax Methods of FactoryBot
   config.shared_context_metadata_behavior = :apply_to_host_groups
-  #config.include_context "Authenticated User", :include_shared => true
+  # config.include_context "Authenticated User", :include_shared => true
   config.include FactoryBot::Syntax::Methods
 end

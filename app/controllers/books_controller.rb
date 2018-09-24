@@ -1,4 +1,3 @@
-
 class BooksController < ApplicationController
   include Wor::Paginate
   before_action :authenticate_user!
