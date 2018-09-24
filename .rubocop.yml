@@ -3,3 +3,9 @@ Documentation:
 
 LineLength:
   Max: 99
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
