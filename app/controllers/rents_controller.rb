@@ -1,6 +1,4 @@
-class RentsController < ApplicationController
-  include Wor::Paginate
-  before_action :authenticate_user!
+class RentsController < ApiController
 
   def index
     @rents = Rent.where(user_id: params[:user_id])
