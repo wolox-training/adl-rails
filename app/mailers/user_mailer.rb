@@ -3,7 +3,8 @@ class UserMailer < ApplicationMailer
 
   def welcome_email(rent)
     @rent = rent
-    mail(to: 'lala@wolox.com.ar', subject: 'Welcome to My Awesome Site') do |format|
+    @book = rent.book
+    mail(to: rent.user.email, subject: 'Welcome to My Awesome Site') do |format|
       format.html { render 'welcome_email' }
     end
   end
