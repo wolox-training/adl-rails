@@ -9,7 +9,7 @@ module Api
       def create
         @rent = Rent.new(rent_params)
         if @rent.save
-          render json: { response: 'The rent has been created' }, status: :ok
+          EmailWorker.perform_async(@rent.id)
         else
           render json: { errors: @rent.errors.full_messages }, status: :bad_request
         end
