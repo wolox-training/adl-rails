@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+    <h1>Your rent has been successfully created</h1>
+    <p>
+      <b>Created at:</b> <%= @rent.created_at %><br>
+      <b>Book's details:</b>
+      <br>
+          <b>Genre: </b><%= @rent.book.genre %><br>
+          <b>Author: </b><%= @rent.book.author %><br>
+          <b>Publisher: </b><%= @rent.book.publisher %><br>
+          <b>Year: </b><%= @rent.book.year %><br>
+          <b>Title: </b><%= @rent.book.title %><br>
+          <b>Image: </b><%= @rent.book.image %><br>
+
+      <b>Initial date:</b> <%= @rent.initial_date %><br>
+      <b>Final date:</b> <%= @rent.final_date %><br>
+    </p>
+
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
