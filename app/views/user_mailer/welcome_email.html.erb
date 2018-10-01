@@ -6,22 +6,22 @@
   </head>
   <body>
 
-    <h1>Your rent has been successfully created</h1>
+    <h1><%= t '.email.head' %></h1>
     <p>
-      <b>Created at:</b> <%= @rent.created_at %><br>
-      <b>Book's details:</b>
+      <b><%= t '.email.created_at' %> </b> <%= @rent.created_at %><br>
+      <b><%= t '.book.details' %> </b>
       <br>
-          <b>Genre: </b><%= @book.genre %><br>
-          <b>Author: </b><%= @book.author %><br>
-          <b>Publisher: </b><%= @book.publisher %><br>
-          <b>Year: </b><%= @book.year %><br>
-          <b>Title: </b><%= @book.title %><br>
-          <b>Image: </b><%= @book.image %><br>
+          <b><%= t '.book.genre' %> </b><%= @book.genre %><br>
+          <b><%= t '.book.author' %> </b><%= @book.author %><br>
+          <b><%= t '.book.publisher' %> </b><%= @book.publisher %><br>
+          <b><%= t '.book.year' %> </b><%= @book.year %><br>
+          <b><%= t '.book.title' %> </b><%= @book.title %><br>
+          <b><%= t '.book.image' %> </b><%= @book.image %><br>
 
-      <b>Initial date:</b> <%= @rent.initial_date %><br>
-      <b>Final date:</b> <%= @rent.final_date %><br>
+      <b><%= t '.email.initial_date' %> </b> <%= @rent.initial_date %><br>
+      <b><%= t '.email.initial_date' %> </b> <%= @rent.final_date %><br>
     </p>
 
-    <p>Thanks for joining and have a great day!</p>
+    <p><%= t '.email.bye' %></p>
   </body>
 </html>
