@@ -9,7 +9,7 @@ module Api
       def create
         @rent = Rent.new(rent_params)
         if @rent.save
-          EmailWorker.perform_async([@rent.id, @rent.user.locale])
+          EmailWorker.perform_async(@rent.id)
         else
           render json: { errors: @rent.errors.full_messages }, status: :bad_request
         end
