@@ -1,0 +1,18 @@
+es:
+  hello: "Hola ¿Cómo andás?"
+  user_mailer:
+    welcome_email:
+      email:
+        head: "Tu alquiler entró de 10!"
+        created_at: "Creado en la fecha: "
+        initial_date: "Fecha inicial: "
+        final_date: "Fecha final: "
+        bye: "Gracias por unirtenos, que tengas un excelente día"
+      book:
+        details: "Detalles del libro: "
+        genre: "Género literario: "
+        author: "Autor: "
+        title: "Título: "
+        publisher: "Editor: "
+        year: "Anio: "
+        image: "Imagen: "

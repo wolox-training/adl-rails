@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :locale, presence: true
   before_save :skip_confirmation!
   has_one :rent, dependent: :destroy
 end
