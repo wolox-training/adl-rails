@@ -7,3 +7,4 @@ LineLength:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
+    - 'app/admin/*.rb'
