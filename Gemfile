@@ -73,3 +73,4 @@ gem 'versionist',  '~> 1.7.0'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'sidekiq', '~> 5.2.2'
 gem 'activeadmin', github: 'activeadmin'
+gem "pundit", "~> 2.0.0"

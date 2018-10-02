@@ -3,7 +3,13 @@ module Api
     class RentsController < ApiController
       def index
         @rents = Rent.where(user_id: params[:user_id])
-        render_paginated @rents
+        @user = User.find(params[:user_id])
+        begin
+          authorize(@user)
+          render_paginated @rents
+        rescue Pundit::NotAuthorizedError
+          render json: { errors: "You're not authorized" }, status: :unauthorized
+        end
       end
 
       def create
