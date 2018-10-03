@@ -1,4 +1,4 @@
-class UserPolicy < ApplicationPolicy
+class UserPolicy
   attr_reader :user, :passed_user
 
   def initialize(user, passed_user)
@@ -7,6 +7,10 @@ class UserPolicy < ApplicationPolicy
   end
 
   def index?
+    user.id == passed_user.id
+  end
+
+  def create?
     user.id == passed_user.id
   end
 end

@@ -8,3 +8,7 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
     - 'app/admin/*.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - "app/controllers/api/v1/*.rb"
