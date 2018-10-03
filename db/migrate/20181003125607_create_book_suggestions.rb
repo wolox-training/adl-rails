@@ -8,7 +8,7 @@ class CreateBookSuggestions < ActiveRecord::Migration[5.1]
       t.string :link, null: false
       t.string :publisher, null: false
       t.string :year, null: false
-      t.references :user, index: true, null: false
+      t.references :user, index: true, null: true
 
       t.timestamps
     end
