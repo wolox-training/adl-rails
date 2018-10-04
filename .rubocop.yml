@@ -8,3 +8,6 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
     - 'app/admin/*.rb'
+
+AllCops:
+  TargetRubyVersion: 2.5
