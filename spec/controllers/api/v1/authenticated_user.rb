@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 shared_context 'Authenticated User' do
   let(:user) { create(:user) }
 
