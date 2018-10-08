@@ -8,4 +8,8 @@ FactoryBot.define do
     last_name             { Faker::Name.last_name }
     locale                { 'en' }
   end
+
+  trait :lang_es do
+    locale :es
+  end
 end

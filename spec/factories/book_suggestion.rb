@@ -9,6 +9,5 @@ FactoryBot.define do
     year      { Faker::Number.between(2016, 2018) }
     price     { Faker::Number.between(300, 1500) }
     synopsis  { Faker::Movie.quote }
-    user_id   { nil }
   end
 end

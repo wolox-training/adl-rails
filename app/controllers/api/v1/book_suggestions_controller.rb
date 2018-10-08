@@ -12,7 +12,7 @@ module Api
           render json: @book_suggestion, status: :created
         else
           render json: { errors: @book_suggestion.errors.full_messages },
-                 status: :internal_server_error
+                 status: :unprocessable_entity
         end
       end
 
