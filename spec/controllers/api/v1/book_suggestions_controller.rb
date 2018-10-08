@@ -14,28 +14,7 @@ describe Api::V1::BookSuggestionsController, type: :controller do
         post :create, params: { book_suggestion: book_suggestion_attr }
       end
 
-      it 'creates a new book_suggestion' do
-        expect do
-          request_response = JSON.parse(response.body)
-          expect(request_response['user_id']).to eq user.id
-        end
-      end
-
-      it 'responds with created status' do
-        expect(response).to have_http_status(:created)
-      end
-    end
-
-    context 'When creating a valid book suggestion with authorized english user' do
-      let(:user) { create(:user) }
-      let!(:book_suggestion_attr) { attributes_for(:book_suggestion) }
-
-      before do
-        request.headers.merge! user.create_new_auth_token
-        post :create, params: { book_suggestion: book_suggestion_attr }
-      end
-
-      it 'creates a new book_suggestion' do
+      it 'creates a new book_suggestion with valid user_id' do
         expect do
           request_response = JSON.parse(response.body)
           expect(request_response['user_id']).to eq user.id
@@ -54,7 +33,7 @@ describe Api::V1::BookSuggestionsController, type: :controller do
         post :create, params: { book_suggestion: book_suggestion_attr }
       end
 
-      it 'creates a new book_suggestion' do
+      it 'creates a new book_suggestion with user_id nil' do
         expect do
           request_response = JSON.parse(response.body)
           expect(request_response['user_id']).to eq nil
@@ -63,18 +42,6 @@ describe Api::V1::BookSuggestionsController, type: :controller do
 
       it 'responds with created status' do
         expect(response).to have_http_status(:created)
-      end
-    end
-
-    context 'When creating a invalid book suggestion with year nil' do
-      let!(:book_suggestion_attr) { attributes_for(:book_suggestion, year: nil) }
-
-      before do
-        post :create, params: { book_suggestion: book_suggestion_attr }
-      end
-
-      it 'responds with unprocessable_entity status' do
-        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end

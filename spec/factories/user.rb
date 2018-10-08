@@ -10,6 +10,6 @@ FactoryBot.define do
   end
 
   trait :lang_es do
-    locale :es
+    locale { 'es' }
   end
 end
