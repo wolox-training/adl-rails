@@ -15,10 +15,8 @@ describe Api::V1::BookSuggestionsController, type: :controller do
       end
 
       it 'creates a new book_suggestion with valid user_id' do
-        expect do
-          request_response = JSON.parse(response.body)
-          expect(request_response['user_id']).to eq user.id
-        end
+        request_response = JSON.parse(response.body)
+        expect(request_response['user_id']).to eq user.id
       end
 
       it 'responds with created status' do
@@ -34,10 +32,8 @@ describe Api::V1::BookSuggestionsController, type: :controller do
       end
 
       it 'creates a new book_suggestion with user_id nil' do
-        expect do
-          request_response = JSON.parse(response.body)
-          expect(request_response['user_id']).to eq nil
-        end
+        request_response = JSON.parse(response.body)
+        expect(request_response['user_id']).to eq nil
       end
 
       it 'responds with created status' do
