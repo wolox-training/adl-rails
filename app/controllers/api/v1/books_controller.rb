@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require_relative '../../../services/open_library_service'
 
 module Api
   module V1
@@ -12,6 +13,12 @@ module Api
         @book = Book.find(params[:id])
         render json: @book
       end
+
+      def open_library()
+        ol_response = OpenLibraryService.new().book_info
+        render json: ol_response
+      end
+
     end
   end
 end
