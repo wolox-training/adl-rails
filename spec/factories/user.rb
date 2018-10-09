@@ -6,10 +6,10 @@ FactoryBot.define do
     password              { Faker::Internet.password }
     first_name            { Faker::Name.first_name }
     last_name             { Faker::Name.last_name }
-    locale                { 'en' }
+    locale                :en
   end
 
   trait :lang_es do
-    locale { 'es' }
+    locale  :es
   end
 end
