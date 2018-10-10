@@ -3,7 +3,7 @@
 require 'rails_helper'
 require './spec/controllers/api/v1/authenticated_user'
 
-describe BooksController, type: :controller do
+describe Api::V1::BooksController, type: :controller do
   include_context 'Authenticated User'
 
   describe 'GET #index' do
