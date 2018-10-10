@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   api_version(module: 'api/v1', path: { value: 'api/v1' }, defaults: { format: :json }) do
     resources :books, only: [:index,:show]
-    get 'books/open_library/show', to: 'books#open_library_show'
+    resources :open_library, only: [:show]
 
     resources :users do
       resources :rents, only: [:index, :create]
