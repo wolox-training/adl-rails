@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# require_relative '../../../services/open_library_service'
-
 module Api
   module V1
     class BooksController < ApiController
