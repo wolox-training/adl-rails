@@ -2,26 +2,24 @@
 
 class OpenLibraryService
   include HTTParty
-  base_uri 'https://openlibrary.org'
+  HTTPARTY_BASE_URL = 'https://openlibrary.org'
+  base_uri HTTPARTY_BASE_URL
 
   def isbn_hash(isbn)
-    hash_response = book_information(isbn)
-    hash_response
+    book_information(isbn)
   end
 
   private
 
   def book_information(isbn)
     url_isbn = "ISBN:#{isbn}"
-    @options = { query: { bibkeys: url_isbn, format: 'json', jscmd: 'data' },
-                 headers: { 'Accept' => 'application/json' } }
     begin
-      ol_response = self.class.get('/api/books', @options)[url_isbn]
+      ol_response = self.class.get('/api/books', build_query_options(url_isbn))[url_isbn]
     rescue SocketError
       return 'The URI is wrong, change it please'
     end
-    hash = build_hash(ol_response, isbn)
-    hash
+
+    build_hash(ol_response, isbn)
   end
 
   def build_hash(ol_response, isbn)
@@ -32,5 +30,9 @@ class OpenLibraryService
       number_of_pages: ol_response['number_of_pages'],
       authors: ol_response['authors']
     }
+  end
+
+  def build_query_options(url_isbn)
+    { query: { bibkeys: url_isbn, format: 'json', jscmd: 'data' } }
   end
 end
