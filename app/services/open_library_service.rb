@@ -1,26 +1,23 @@
 # frozen_string_literal: true
 
 class OpenLibraryService
-  include HTTParty
+  include HTTParty.freeze
   HTTPARTY_BASE_URL = 'https://openlibrary.org'
   base_uri HTTPARTY_BASE_URL
 
-  def isbn_hash(isbn)
-    book_information(isbn)
-  end
-
-  private
-
-  def book_information(isbn)
+  def book_hash(isbn)
     url_isbn = "ISBN:#{isbn}"
     begin
-      ol_response = self.class.get('/api/books', build_query_options(url_isbn))[url_isbn]
+      ol_response = self.class.get('/api/books', query: build_query_options(url_isbn),
+                                                 headers: build_headers)[url_isbn]
     rescue SocketError
       return 'The URI is wrong, change it please'
     end
 
     build_hash(ol_response, isbn)
   end
+
+  private
 
   def build_hash(ol_response, isbn)
     {
@@ -32,7 +29,11 @@ class OpenLibraryService
     }
   end
 
+  def build_headers
+    { 'Accept' => 'application/json' }
+  end
+
   def build_query_options(url_isbn)
-    { query: { bibkeys: url_isbn, format: 'json', jscmd: 'data' } }
+    { bibkeys: url_isbn, format: 'json', jscmd: 'data' }
   end
 end

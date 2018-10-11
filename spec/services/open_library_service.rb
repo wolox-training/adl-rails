@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 describe OpenLibraryService, type: :service do
-  describe 'GET #isbn_hash' do
+  describe 'GET #book_hash' do
     let!(:service) { OpenLibraryService.new }
-    let(:hash) { service.isbn_hash('0385472579') }
+    let(:hash) { service.book_hash('0385472579') }
 
     context 'when service connects successfully with external API' do
       it "its response's title is Zen speaks" do
@@ -31,7 +31,7 @@ describe OpenLibraryService, type: :service do
       end
 
       it 'raises and SocketError exception' do
-        response = service.isbn_hash('0385472579')
+        response = service.book_hash('0385472579')
         expect(response).to eq 'The URI is wrong, change it please'
       end
     end
