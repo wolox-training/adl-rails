@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class OpenLibraryService
-  include HTTParty.freeze
-  HTTPARTY_BASE_URL = 'https://openlibrary.org'
+  include HTTParty
+  HTTPARTY_BASE_URL = 'https://openlibrary.org'.freeze # tira quilombos con rubocop
   base_uri HTTPARTY_BASE_URL
 
   def book_hash(isbn)
