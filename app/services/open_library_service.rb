@@ -2,7 +2,7 @@
 
 class OpenLibraryService
   include HTTParty
-  HTTPARTY_BASE_URL = 'https://openlibrary.org'.freeze # tira quilombos con rubocop
+  HTTPARTY_BASE_URL = 'https://openlibrary.org' # tira quilombos con rubocop
   base_uri HTTPARTY_BASE_URL
 
   def book_hash(isbn)
