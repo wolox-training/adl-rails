@@ -1,18 +1,22 @@
 
-
-<%= form_tag({controller: "open_library", action: "show"}, method: "get",  id: "book_form") do %>
+<br>
+<%= form_tag({controller: "open_library", action: "show", format: :json}, method: "get",  id: "book_form", remote: true) do %>
   <%= text_field_tag(:isbn) %>
   <%= submit_tag("Search Book") %>
 <% end %>
 
-<form action="/" method="GET">
-  <input type="text">
-  <button type="submit">Enviar</button>
-</form>
-
 <script>
-  $("#book_form").submit(function(e){
-    e.preventDefault();
-    alert("Intentando enviar el form...");
+$("#book_form").submit(function(event){
+  event.preventDefault(event);
+  $.ajax({
+    type:"GET",
+    url:"/api/v1/open_library/"+$("#isbn").val(),
+    dataType:"json"
+  }).done(function(data) {
+    console.log(data.resp);
+  }).fail(function(data){
+    console.log(data.responseText);
   });
+});
+
 </script>
