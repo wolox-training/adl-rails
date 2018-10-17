@@ -2,31 +2,37 @@
 
 class OpenLibraryService
   include HTTParty
-  HTTPARTY_BASE_URL = 'https://openlibrary.org' # tira quilombos con rubocop
+  HTTPARTY_BASE_URL = 'https://openlibrary.org'
   base_uri HTTPARTY_BASE_URL
 
-  def book_hash(isbn)
+  def get_book_hash(isbn)
     url_isbn = "ISBN:#{isbn}"
     begin
-      ol_response = self.class.get('/api/books', query: build_query_options(url_isbn),
-                                                 headers: build_headers)[url_isbn]
+      ol_response = search_book(url_isbn)
     rescue SocketError
       return 'The URI is wrong, change it please'
     end
 
-    build_hash(ol_response, isbn)
+    build_hash(ol_response, isbn, url_isbn)
   end
 
   private
 
-  def build_hash(ol_response, isbn)
+  def search_book(url_isbn)
+    JSON.parse(self.class.get('/api/books', query: build_query_options(url_isbn),
+                                            headers: build_headers))
+  end
+
+  def build_hash(ol_response, isbn, url_isbn)
     {
       isbn: isbn,
-      title: ol_response['title'],
-      subtitle: ol_response['subtitle'],
-      number_of_pages: ol_response['number_of_pages'],
-      authors: ol_response['authors']
+      title: ol_response[url_isbn]['title'],
+      subtitle: ol_response[url_isbn]['subtitle'],
+      number_of_pages: ol_response[url_isbn]['number_of_pages'],
+      authors: ol_response[url_isbn]['authors']
     }
+  rescue NoMethodError
+    "We couldn't find that book, sorry"
   end
 
   def build_headers

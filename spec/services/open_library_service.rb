@@ -3,11 +3,16 @@
 require 'rails_helper'
 
 describe OpenLibraryService, type: :service do
-  describe 'GET #book_hash' do
+  describe 'GET #search_book' do
     let!(:service) { OpenLibraryService.new }
-    let(:hash) { service.book_hash('0385472579') }
+    let(:hash) { service.get_book_hash('0385472579') }
 
-    context 'when service connects successfully with external API' do
+    context 'when service connects successfully with external API and book exists' do
+      before do
+        stub_request(:get, 'https://openlibrary.org/api/books?bibkeys=ISBN:0385472579&format=json&jscmd=data')
+          .to_return(body: File.read(file_fixture('ok.json')), status: 200)
+      end
+
       it "its response's title is Zen speaks" do
         expect(hash[:title]).to eq 'Zen speaks'
       end
@@ -25,14 +30,24 @@ describe OpenLibraryService, type: :service do
       end
     end
 
+    context "when service connects successfully with external API but book doesn't exist" do
+      before do
+        stub_request(:get, 'https://openlibrary.org/api/books?bibkeys=ISBN:0385472579&format=json&jscmd=data')
+          .to_return(body: File.read(file_fixture('fail.json')), status: 404)
+      end
+
+      it "raises a 'inexistent book' message " do
+        expect(hash).to eq "We couldn't find that book, sorry"
+      end
+    end
+
     context "When service fails to connect to external API's URI" do
       before do
         allow(OpenLibraryService).to receive(:get).and_raise(SocketError)
       end
 
-      it 'raises and SocketError exception' do
-        response = service.book_hash('0385472579')
-        expect(response).to eq 'The URI is wrong, change it please'
+      it 'raises a "URI wrong" message ' do
+        expect(hash).to eq 'The URI is wrong, change it please'
       end
     end
   end
